@@ -5,6 +5,7 @@ use App\http\Controllers\AdminController;
 use App\http\Controllers\Auth\LogoutController;
 use App\http\Controllers\Auth\LoginController;
 use App\http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DepartmentController;
 
 
 
@@ -20,6 +21,8 @@ use App\http\Controllers\Auth\RegisterController;
 Route::middleware(['redirect.notauthenticated'])->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
     Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
+    Route::resource('departments', DepartmentController::class);
+
 });
 // These pages will not be accessed when the admin is logged in
 
